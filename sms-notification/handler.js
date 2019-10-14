@@ -8,7 +8,7 @@ util.promisify(messagebird.messages.create)
 
 module.exports.send = async event => {
   const smsPromises = []
-  for (const record of event.Records){
+  for (const record of event.Records) {
     const message = JSON.parse(record.body).Message
     smsPromises.push(messagebird.messages.create({
       originator: process.env.SMS_PHONE_FROM,
